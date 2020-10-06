@@ -3,7 +3,11 @@ package in.bitcode.customview1;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -72,5 +76,21 @@ public class ExitButton extends Button {
             builder.create().show();
 
         }
+    }
+
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        Paint paint = new Paint();
+        paint.setColor(Color.RED);
+
+        canvas.drawLine(40, 0, 40, getHeight(), paint);
+        paint.setColor(Color.BLUE);
+        canvas.drawLine(60, 0, 60, getHeight(), paint);
+
+        canvas.drawCircle(100, 40, 30, paint);
+
+        Log.e("tag", "onDraw()");
     }
 }
